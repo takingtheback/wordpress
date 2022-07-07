@@ -1,0 +1,66 @@
+워드프레스 제대로 개발하기 - 어드민 편 / 인프런
+
+1. IDE - PhpStorm
+- 가장 강력한 PHP IDE(Intergrated development environment, 통합 개발 환경)
+
+- 파일 찾기 (맥 Cmd+Shift+O, 윈도우 Ctrl+Shift+N)
+- 심볼 찾기 (맥 Cmd+Opt+O, 윈도우 Ctrl+Alt+Shift+N)
+- 최근 파일 검색 (맥 Cmd+E, 윈도우 Ctrl+E)
+- 위치 기억하고 앞뒤로 이동 (맥 Cmd+Opt+좌/우, 윈도우 Ctrl+Alt+좌/우)
+- 정의로 점프 (맥 Cmd+B, 윈도우 Ctrl+B)
+- 파라미터 힌트 (맥 Cmd+P, 윈도우 Ctrl+P)
+- 정의 빠른 보기 (맥 F1, 윈도우 Ctrl+Q)
+- 다중 선택 (맥 Ctrl+G, 윈도우 Alt+J)
+- 리네임 (Shift+F6)
+- 코드 정렬 (워드프레스 표준 코드 스타일로)
+
+2. Post Type
+- Post Type 과 post가 다른 개념
+    - Post Type : 글의 종류
+    - post : 글의 종류 중 게시글
+- post: 글 - 누적됨
+- page: 페이지 - 한 번 써두고 변하지 않음. 소개 같은 것.
+- attachment: 첨부 파일
+- revision: post, page의 과거 버전 기록
+- nav_menu_item: 외모(Appearance)의 메뉴(Menu)에서 생성한 메뉴 항목
+- book이라는 Custom Post Type을 만드는 것.
+
+3. 관리자 페이지에 “책” 띄우기
+- book custom post type을 만들어 봅니다.
+http://man.hubwiz.com/docset/WordPress.docset/Contents/Resources/Documents/codex.wordpress.org/Function_Reference/register_post_type.html
+
+- functions.php: 워드프레스가 기본으로 include하는 php 파일.
+- register_post_type: 새 포스트 타입을 등록하는 함수.
+- add_action: 특정 순간에 함수를 실행할 수 있도록 시점과 함수를 주입하는 함수.
+
+basic code
+function codex_custom_init() {
+    $args = array(
+        'public' => true,
+        'label'  => 'Books'
+    );
+    register_post_type( 'book', $args );
+}
+add_action( 'init', 'codex_custom_init' );
+
+4. 메뉴 위치
+
+'menu_position' => 3
+5: 글 밑
+10: 미디어 밑
+20: 페이지 밑
+25: 댓글 밑
+60: 첫 번째 구분선 밑
+65: 플러그인 밑
+70: 사용자 밑
+75: 도구 밑
+80: 설정 밑
+100: 두 번째 구분선 밑
+
+5. 메뉴 아이콘
+- wordpress에서 제공하는 아이콘
+https://developer.wordpress.org/resource/dashicons/#chart-pie
+
+'menu_icon' => 'dashicons-book',
+
+- Fontawesome Icon 사용
