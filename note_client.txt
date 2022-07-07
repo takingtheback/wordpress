@@ -34,3 +34,4 @@ html/wp-content/themes 에 예제에서 받은 book 테마 설치
     register_taxonomy
 - 부가 정보 - 앞부제, 뒷부제, 가격, 발행일...
     postmeta, custom field
+
